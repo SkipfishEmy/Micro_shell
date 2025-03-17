@@ -52,8 +52,8 @@ def print_banner():
 ╚═╝░░░░░╚═╝╚═╝░╚════╝░╚═╝░░╚═╝░╚════╝░  ╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚══════╝
 """
 	print(banner)
-	print("Author: Senzee")
-	print("Github Repository: https://github.com/senzee1984/micr0_shell")
+	print("Author: SkipfishEmy")
+	print("Github Repository: https://github.com/SkipfishEmy/Micro_shell/edit/main/microshell.py")
 	print("Description: Dynamically generate PIC Null-Free Reverse Shell Shellcode")
 	print("Attention: In rare cases (.255 and .0 co-exist), generated shellcode could contain NULL bytes, E.G. when IP is 192.168.0.255\n\n")
 
