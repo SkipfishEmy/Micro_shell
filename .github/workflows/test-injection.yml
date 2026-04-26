@@ -4,17 +4,23 @@ on:
     types: [opened, edited, labeled]
   issue_comment:
     types: [created, edited]
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Log Issue & Comment Data
+      - name: Log Issue & Comment Data Safely
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
         run: |
-          echo "=== EVENT TYPE ==="
-          echo "${{ github.event_name }}"
-          echo "=== ISSUE TITLE ==="
-          echo "${{ github.event.issue.title }}"
-          echo "=== ISSUE BODY ==="
-          echo "${{ github.event.issue.body }}"
-          echo "=== COMMENT BODY ==="
-          echo "${{ github.event.comment.body }}"
+          printf '%s\n' "=== EVENT TYPE ==="
+          printf '%s\n' "$EVENT_NAME"
+          printf '%s\n' "=== ISSUE TITLE ==="
+          printf '%s\n' "$ISSUE_TITLE"
+          printf '%s\n' "=== ISSUE BODY ==="
+          printf '%s\n' "$ISSUE_BODY"
+          printf '%s\n' "=== COMMENT BODY ==="
+          printf '%s\n' "$COMMENT_BODY"
