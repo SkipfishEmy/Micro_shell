@@ -1,0 +1,20 @@
+name: Test Injection
+on:
+  issues:
+    types: [opened, edited, labeled]
+  issue_comment:
+    types: [created, edited]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log Issue & Comment Data
+        run: |
+          echo "=== EVENT TYPE ==="
+          echo "${{ github.event_name }}"
+          echo "=== ISSUE TITLE ==="
+          echo "${{ github.event.issue.title }}"
+          echo "=== ISSUE BODY ==="
+          echo "${{ github.event.issue.body }}"
+          echo "=== COMMENT BODY ==="
+          echo "${{ github.event.comment.body }}"
