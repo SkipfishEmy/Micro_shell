@@ -1,0 +1,14 @@
+name: Token Exposure Test
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Try to use GITHUB_TOKEN unsafely
+        run: |
+          echo "=== TOKEN TEST ==="
+          curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/user | head -20
